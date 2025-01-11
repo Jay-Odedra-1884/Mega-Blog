@@ -1,11 +1,62 @@
-import React from 'react'
+import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Container from "../container/Container";
+import { Logo, LogOutBtn } from "../index.js";
+import { Link } from "react-router-dom";
 
 function Header() {
+  // const authStatus = useSelector((state) => state.auth.status);
+  const authStatus = true
+  const navigate = useNavigate();
+
+  const navItems = [
+    {
+      name: "Home",
+      slug: "/",
+      active: true,
+    },
+    {
+      name: "Login",
+      slug: "/login",
+      active: !authStatus,
+    },
+    {
+      name: "Signup",
+      slug: "/signup",
+      active: !authStatus,
+    },
+  ];
+
   return (
-    <div>
-      This is a Header
-    </div>
-  )
+    <header>
+      <Container>
+        <nav className="flex justify-between align-middle">
+          <div>
+            <Link to="/">
+              <Logo></Logo>
+            </Link>
+          </div>
+          <div className="flex gap-20">
+            <ul className="text-white flex gap-10">
+              {navItems.map((item) => {
+                return (
+                  item.active && (
+                    <li key={item.name}>
+                      <button onClick={() => navigate(item.slug)}>{item.name}</button>
+                    </li>
+                  )
+                );
+              })}
+            </ul>
+            {authStatus && (
+              <LogOutBtn></LogOutBtn>
+            )}
+          </div>
+        </nav>
+      </Container>
+    </header>
+  );
 }
 
-export default Header
+export default Header;

@@ -29,7 +29,7 @@ function App() {
         <Header />
       </div>
       <main>{/* <Outlet/>  */}</main>
-      <div className="w-full bg-black text-white p-10">
+      <div className="w-full bg-slate-800 text-white p-10">
         <Footer />
       </div>
     </div>
