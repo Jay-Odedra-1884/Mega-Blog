@@ -4,7 +4,7 @@ import conf from "./conf/conf";
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth.js";
 import { login, logOut } from "./features/authSlice.js";
-import { Header, Footer } from "./components/index.js";
+import { Header, Footer, Login } from "./components/index.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ function App() {
       <div className="w-full bg-purple-700 text-white p-5">
         <Header />
       </div>
-      <main>{/* <Outlet/>  */}</main>
+      <main>{/* <Outlet/>  */}<Login></Login></main>
       <div className="w-full bg-slate-800 text-white p-10">
         <Footer />
       </div>

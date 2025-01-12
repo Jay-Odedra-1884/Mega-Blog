@@ -2,5 +2,10 @@ import Header from './Header/Header.jsx'
 import Footer from './Footer/Footer.jsx'
 import Logo from './Logo.jsx'
 import LogOutBtn from './Header/LogOutBtn.jsx'
+import Container from './container/Container.jsx'
+import Button from './Button.jsx'
+import { Input } from './Input.jsx'
+import Login from './Login.jsx'
+import PostCard from './PostCard.jsx'
 
-export {Header, Footer, Logo, LogOutBtn}
+export {Header, Footer, Logo, LogOutBtn, Container, Button, Input, Login, PostCard,}
