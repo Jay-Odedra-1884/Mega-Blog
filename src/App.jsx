@@ -4,7 +4,7 @@ import conf from "./conf/conf";
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth.js";
 import { login, logOut } from "./features/authSlice.js";
-import { Header, Footer,SignUp } from "./components/index.js";
+import { Header, Footer } from "./components/index.js";
 
 function App() {
   const [loading, setLoading] = useState(true);

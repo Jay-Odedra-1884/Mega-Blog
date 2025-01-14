@@ -8,5 +8,7 @@ import { Input } from './Input.jsx'
 import PostCard from './PostCard.jsx'
 import Login from './Login.jsx'
 import SignUp from './SignUp.jsx'
+import RTE from './RTE.jsx'
+import Select from './Select.jsx'
 
-export {Header, Footer, Logo, LogOutBtn, Container, Button, Input, Login, PostCard, SignUp}
+export {Header, Footer, Logo, LogOutBtn, Container, Button, Input, Login, PostCard, SignUp, RTE, Select}
