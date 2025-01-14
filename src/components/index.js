@@ -5,7 +5,8 @@ import LogOutBtn from './Header/LogOutBtn.jsx'
 import Container from './container/Container.jsx'
 import Button from './Button.jsx'
 import { Input } from './Input.jsx'
-import Login from './Login.jsx'
 import PostCard from './PostCard.jsx'
+import Login from './Login.jsx'
+import SignUp from './SignUp.jsx'
 
-export {Header, Footer, Logo, LogOutBtn, Container, Button, Input, Login, PostCard,}
+export {Header, Footer, Logo, LogOutBtn, Container, Button, Input, Login, PostCard, SignUp}
