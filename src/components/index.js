@@ -10,5 +10,6 @@ import Login from './Login.jsx'
 import SignUp from './SignUp.jsx'
 import RTE from './RTE.jsx'
 import Select from './Select.jsx'
+import PostForm from './post-form/PostForm.jsx'
 
-export {Header, Footer, Logo, LogOutBtn, Container, Button, Input, Login, PostCard, SignUp, RTE, Select}
+export {Header, Footer, Logo, LogOutBtn, Container, Button, Input, Login, PostCard, SignUp, RTE, Select, PostForm}

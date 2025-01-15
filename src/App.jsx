@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth.js";
 import { login, logOut } from "./features/authSlice.js";
 import { Header, Footer } from "./components/index.js";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -23,12 +24,13 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
+
   return !loading ? (
     <div className="w-full h-screen bg-gray-400 text-center flex flex-col justify-between">
       <div className="w-full bg-purple-700 text-white p-5">
         <Header />
       </div>
-      <main>{/* <Outlet/>  */}</main>
+      <main><Outlet/></main>
       <div className="w-full bg-slate-800 text-white p-10">
         <Footer />
       </div>
