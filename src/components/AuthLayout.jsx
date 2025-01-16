@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Protected({ children, authantication = true }) {
-  const nevigate = useNavigate();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const authStatus = useSelector((state) => state.auth.status);
 

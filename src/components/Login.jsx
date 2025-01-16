@@ -12,7 +12,7 @@ function Login() {
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
 
-  async function login() {
+  async function login(data) {
     setError("");
     try {
       const session = authService.login(data);
@@ -22,7 +22,8 @@ function Login() {
         navigate("/");
       }
     } catch (error) {
-      setError(error.message);
+      setError("Something went wrong");
+      console.log(error);
     }
   }
 

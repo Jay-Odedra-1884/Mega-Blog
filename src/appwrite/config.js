@@ -17,7 +17,8 @@ export class Service {
       return await this.databases.createDocument(
         conf.databaseId,
         conf.collectionId,
-        slug,
+        // slug,
+        ID.unique(),
         {
           title,
           content,
@@ -42,7 +43,8 @@ export class Service {
           content,
           featuredImage,
           status,
-        }
+        },
+        ["*"]
       );
     } catch (error) {
       console.log("Appwrite services :: updatePost(config.js) :: error", error);

@@ -16,6 +16,16 @@ function Header() {
       active: true,
     },
     {
+      name: "All Posts",
+      slug: "/all-posts",
+      active: authStatus,
+    },
+    {
+      name: "Add Post",
+      slug: "/add-post",
+      active: authStatus,
+    },
+    {
       name: "Login",
       slug: "/login",
       active: !authStatus,

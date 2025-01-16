@@ -4,12 +4,15 @@ import service from '../appwrite/config';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Container } from '../components/index';
-import { parse } from 'postcss';
+import parse from "html-react-parser";
 
 
 function Post() {
 
-    const slug = useParams();
+    const {id} = useParams();
+    console.log(id);
+    
+    
     const navigate = useNavigate();
     const [post, setPost] = useState(null);
     const userData = useSelector((state) => state.auth.userData);
@@ -17,21 +20,21 @@ function Post() {
     const isAuther = post && userData ? post.userId === userData.$id : false;
 
     useEffect(() => {
-        if(slug) {
-            service.getPost(slug).then((post) => {
+        if(id) {
+            service.getPost(id).then((post) => {
                 if(post) setPost(post);
                 else navigate("/")
             })
         } else {
             navigate("/")
         }
-    }, [slug, nevigate]);
+    }, [id, navigate]);
 
     const deletePost = () => {
         if(post) {
             service.deletePost(post.$id).then((status) => {
                 if(status) {
-                    service.deleteFile(post.feturedImage);
+                    service.deleteFile(post.featuredImage);
                     navigate("/");
                 }
             })
@@ -44,7 +47,7 @@ function Post() {
         {post ? (
             <div>
                 <div>
-                    <img src={service.getFilePreview(post.feturedImage)} alt={post.title} />
+                    <img src={service.getFilePreview(post.featuredImage)} alt={post.title} />
                     {isAuther && (
                         <div>
                             <Link to={`/edit-post/${post.$id}`}>

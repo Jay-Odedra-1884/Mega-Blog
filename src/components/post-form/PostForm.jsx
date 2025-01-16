@@ -6,7 +6,7 @@ import authService from "../../appwrite/config";
 import { Input, RTE, Select, Button } from "../index";
 
 function PostForm({ post }) {
-  const { register, handelSubmit, watch, control, setValue, getValues } =
+  const { handleSubmit ,register, watch, setValue, control, getValues } =
     useForm({
       defaultValues: {
         title: post?.title || "",
@@ -32,17 +32,20 @@ function PostForm({ post }) {
         ...data,
         featuredImage: file ? file.$id : undefined,
       });
+      if (dbPost) {
+        navigate(`/post/${dbPost.$id}`);
+      }
     } else {
-      const file = authService.uploadFile(data.image[0]);
+      const file = await authService.uploadFile(data.image[0]);
 
       if (file) {
         data.featuredImage = file.$id;
-        const dbpost = await authService.createPost({
+        const dbPost = await authService.createPost({
           ...data,
           userId: userData.$id,
         });
 
-        if (dbpost) {
+        if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
         }
       }
@@ -51,41 +54,39 @@ function PostForm({ post }) {
 
   const slugTranslator = useCallback((value) => {
     if (value && typeof value === "string") {
-      return value
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-zA-Z\d\s]+/g, "-")
-        .replace(/\s/g, "-");
+      return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-");
     }
     return "";
-  });
+  },[]);
 
   useEffect(() => {
     const subscription = watch((value, { name }) => {
-      if (name == title) {
+      if (name === "title") {
         setValue("slug", slugTranslator(value.title), { shouldValidate: true });
-      }
+      } 
     });
+
+    return () => subscription.unsubscribe();
   }, [watch, slugTranslator, setValue]);
 
   return (
     <div>
-      <form onSubmit={handelSubmit(submit)}>
+      <form onSubmit={handleSubmit(submit)}>
         <div>
         <Input
           label="Title"
           type="text"
-          placeHolder="Enter Title"
+          placeholder="Enter Title"
           {...register("title", { required: true })}
         />
 
         <Input
           label="Slug"
           type="text"
-          placeHolder="Slug is shown here"
+          placeholder="Slug is shown here"
           {...register("slug", { required: true })}
-          OnInput={(e) => {
-            setValue("slug", slugTranslator(e.target.value), {
+          onInput={(e) => {
+            setValue("slug", slugTranslator(e.currentTarget.value), {
               shouldValidate: true,
             });
           }}

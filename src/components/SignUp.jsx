@@ -13,7 +13,7 @@ function SignUp() {
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
 
-  async function Signup() {
+  async function Signup(data) {
     setError("");
     try {
       const user = authService.createAccount(data);
@@ -41,7 +41,7 @@ function SignUp() {
           <Link to="/login">Login</Link>
         </p>
         {error && <p className="text-red-600">{error}</p>}
-        <form onSubmit={handleSubmit(SignUp)}>
+        <form onSubmit={handleSubmit(Signup)}>
           <Input
             label="Name: "
             type="text"

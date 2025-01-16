@@ -1,43 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import service from'../appwrite/config'
-import { Container, PostCard } from '../components/index';
+import React, { useEffect, useState } from "react";
+import service from "../appwrite/config";
+import { Container, PostCard } from "../components/index";
 
 function Home() {
-    const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        service.getPosts().then((post)=> {
-            if(post) {
-                setPosts(post.documents);
-            }
-        })
-    }, []);
+  useEffect(() => {
+    service.getPosts().then((post) => {
+      if (post) {
+        setPosts(post.documents);
+      }
+    });
+  }, []);
 
-    console.log(posts);
-
-  if(posts.legth === 0) {
+  if (posts.length === 0) {
     return (
-        <div>
-            <Container>
-                <h2>There is nothing to view</h2>
-            </Container>
-        </div>
-    )
+      <div>
+        <Container>
+          <h2>There is nothing to view</h2>
+        </Container>
+      </div>
+    );
   } else {
     return (
-        <div>
+      <div>
         <Container>
-            <div>
+          <div>
             {posts.map((post) => {
-                <div>
-                    <PostCard post={post} />
-                </div>
+              <div key={post.$id}>
+                <PostCard post={post} />
+              </div>;
             })}
-            </div>
+          </div>
         </Container>
-    </div>
-    )
+      </div>
+    );
   }
 }
 
-export default Home
+export default Home;

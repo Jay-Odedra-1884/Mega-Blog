@@ -33,8 +33,7 @@ export class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            // throw error;
-            console.log("User don't login");
+            console.log("usernot authorized", error);
         }
 
         return null;
