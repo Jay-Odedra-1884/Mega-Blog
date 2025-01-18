@@ -17,6 +17,7 @@ function PostForm({ post }) {
     });
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  
 
   const submit = async (data) => {
     if (post) {
@@ -69,6 +70,10 @@ function PostForm({ post }) {
     return () => subscription.unsubscribe();
   }, [watch, slugTranslator, setValue]);
 
+  if (!post && !userData) {
+    return <div>Loading...</div>; // Prevent rendering the form too early
+  } else {
+    
   return (
     <div>
       <form onSubmit={handleSubmit(submit)}>
@@ -77,13 +82,17 @@ function PostForm({ post }) {
           label="Title"
           type="text"
           placeholder="Enter Title"
+          defaultValue={getValues("title")}
           {...register("title", { required: true })}
         />
+        {console.log(getValues("title"))
+        }
 
         <Input
           label="Slug"
           type="text"
           placeholder="Slug is shown here"
+          defaultValue={getValues("slug")}
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTranslator(e.currentTarget.value), {
@@ -117,6 +126,7 @@ function PostForm({ post }) {
       </form>
     </div>
   );
+  }
 }
 
 export default PostForm;

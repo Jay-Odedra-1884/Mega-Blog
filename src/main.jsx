@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp.jsx";
 import AllPosts from "./pages/AllPosts.jsx";
 import Post from "./pages/Post.jsx";
 import AddPost from "./pages/AddPost.jsx"
+import EditPost from "./pages/EditPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,14 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authantication>
             <Post />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/edit-post/:id",
+        element: (
+          <AuthLayout>
+            <EditPost />
           </AuthLayout>
         )
       }

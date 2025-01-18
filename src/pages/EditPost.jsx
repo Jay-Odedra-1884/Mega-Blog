@@ -5,24 +5,28 @@ import { Container, PostForm } from "../components/index";
 
 function EditPost() {
   const [post, setPost] = useState(null);
-  const slug = useParams();
+  const {id} = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (slug) {
-      service.getPost(slug).then((post) => {
-        if (post) setPost(post);
+    if (id) {
+      service.getPost(id).then((post) => {
+        if (post) {
+          setPost(post);
+          console.log(post);
+          
+        }
       });
     } else {
       navigate("/");
     }
-  }, [slug, navigate]);
+  }, [id, navigate]);
 
   return (
     <div>
-      <Containet>
-        <PostForm post={post} />
-      </Containet>
+      <Container>
+        <PostForm post = {post} />
+      </Container>
     </div>
   );
 }

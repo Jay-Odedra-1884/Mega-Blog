@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import service from "../appwrite/config";
 import { Container, PostCard } from "../components/index";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -17,7 +18,7 @@ function Home() {
     return (
       <div>
         <Container>
-          <h2>There is nothing to view</h2>
+          <h2>Please Login to view blog <span className="text-blue-500"><Link to={"/login"}>Login</Link></span></h2>
         </Container>
       </div>
     );
@@ -26,11 +27,11 @@ function Home() {
       <div>
         <Container>
           <div>
-            {posts.map((post) => {
+            {posts.map((post) => (
               <div key={post.$id}>
-                <PostCard post={post} />
-              </div>;
-            })}
+              <PostCard {...post} />
+            </div>
+            ))}
           </div>
         </Container>
       </div>

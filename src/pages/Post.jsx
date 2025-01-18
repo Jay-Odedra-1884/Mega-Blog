@@ -10,7 +10,6 @@ import parse from "html-react-parser";
 function Post() {
 
     const {id} = useParams();
-    console.log(id);
     
     
     const navigate = useNavigate();
