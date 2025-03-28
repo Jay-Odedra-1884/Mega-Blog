@@ -58,6 +58,9 @@ function Post() {
                 </div>
                 <div>
                     <h2>{post.title}</h2>
+                    {
+                    console.log(post.content)
+                    }
                     <p>{parse(post.content)}</p>
                 </div>
             </div>

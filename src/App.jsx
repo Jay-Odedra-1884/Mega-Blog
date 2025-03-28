@@ -26,8 +26,8 @@ function App() {
 
 
   return !loading ? (
-    <div className="w-full h-screen bg-gray-400 text-center flex flex-col justify-between">
-      <div className="w-full bg-purple-700 text-white p-5">
+    <div className="w-full h-auto bg-gray-400 text-center flex flex-col justify-between">
+      <div className="w-full bg-black text-white px-5 py-8">
         <Header />
       </div>
       <main><Outlet/></main>

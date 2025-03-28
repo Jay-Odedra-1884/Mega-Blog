@@ -14,25 +14,31 @@ function AllPosts() {
         })
     }, [])
 
-  return (
-    <div>
-      <Container>
-        {posts ? (
-            <div>
-                {posts.map((post) => (
-                    <div key={post.$id}>
-                        <PostCard {...post} />
-                    </div>
-                ))}
+ if( posts.length === 0) {
+    return (
+        <div>
+            There is no posts....!
+        </div>
+    )
+ } else {
+    return (
+        <div className='w-full '>
+          <Container>
+            <div className='w-full min-h-screen flex flex-wrap gap-2'>
+            {posts ? (
+                    posts.map((post) => (
+                            <PostCard {...post} key={post.$id} />
+                    ))
+            ): (
+                <div>
+                    <h2>There is no posts...:&#40;</h2>
+                </div>
+            )}
             </div>
-        ): (
-            <div>
-                <h2>There is no posts...:&#40;</h2>
-            </div>
-        )}
-      </Container>
-    </div>
-  )
+          </Container>
+        </div>
+      )
+ }
 }
 
 export default AllPosts

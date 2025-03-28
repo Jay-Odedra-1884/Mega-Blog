@@ -41,12 +41,12 @@ function Header() {
     <header>
       <Container>
         <nav className="flex justify-between align-middle">
-          <div>
+          <div className="text-4xl font-bold">
             <Link to="/">
               <Logo></Logo>
             </Link>
           </div>
-          <div className="flex gap-20">
+          <div className="flex gap-20 text-xl justify-center items-center">
             <ul className="text-white flex gap-10">
               {navItems.map((item) => {
                 return (
